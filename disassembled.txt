@@ -1,0 +1,112 @@
+  5           0 RESUME                   0
+
+  8           2 LOAD_CONST               1 (')')
+
+  9           4 LOAD_CONST               2 ('(')
+
+ 10           6 LOAD_CONST               3 ('-')
+
+ 11           8 LOAD_CONST               4 ('+')
+
+ 12          10 LOAD_CONST               5 ('?')
+
+ 13          12 LOAD_CONST               6 ('!')
+
+ 14          14 LOAD_CONST               7 (';')
+
+ 15          16 LOAD_CONST               8 (',')
+
+  7          18 LOAD_CONST               9 (('(', ')', '+', '-', '!', '?', ',', ';'))
+             20 BUILD_CONST_KEY_MAP      8
+             22 STORE_FAST               1 (sign_mapping)
+
+ 19          24 BUILD_LIST               0
+             26 STORE_FAST               2 (result)
+
+ 20          28 LOAD_FAST                0 (text)
+             30 GET_ITER
+        >>   32 FOR_ITER               191 (to 416)
+             34 STORE_FAST               3 (ch)
+
+ 21          36 LOAD_FAST                3 (ch)
+             38 LOAD_METHOD              0 (isalpha)
+             60 PRECALL                  0
+             64 CALL                     0
+             74 POP_JUMP_FORWARD_IF_FALSE   116 (to 308)
+
+ 23          76 LOAD_FAST                3 (ch)
+             78 LOAD_METHOD              1 (isupper)
+            100 PRECALL                  0
+            104 CALL                     0
+            114 POP_JUMP_FORWARD_IF_FALSE    15 (to 146)
+            116 LOAD_GLOBAL              5 (NULL + ord)
+            128 LOAD_CONST              10 ('A')
+            130 PRECALL                  1
+            134 CALL                     1
+            144 JUMP_FORWARD            14 (to 174)
+        >>  146 LOAD_GLOBAL              5 (NULL + ord)
+            158 LOAD_CONST              11 ('a')
+            160 PRECALL                  1
+            164 CALL                     1
+        >>  174 STORE_FAST               4 (base)
+
+ 25         176 LOAD_GLOBAL              5 (NULL + ord)
+            188 LOAD_FAST                3 (ch)
+            190 PRECALL                  1
+            194 CALL                     1
+            204 LOAD_FAST                4 (base)
+            206 BINARY_OP               10 (-)
+            210 STORE_FAST               5 (index)
+
+ 27         212 LOAD_FAST                5 (index)
+            214 LOAD_CONST              12 (3)
+            216 BINARY_OP                5 (*)
+            220 LOAD_CONST              13 (26)
+            222 BINARY_OP                6 (%)
+            226 STORE_FAST               6 (new_index)
+
+ 29         228 LOAD_GLOBAL              7 (NULL + chr)
+            240 LOAD_FAST                6 (new_index)
+            242 LOAD_FAST                4 (base)
+            244 BINARY_OP                0 (+)
+            248 PRECALL                  1
+            252 CALL                     1
+            262 STORE_FAST               7 (new_char)
+
+ 30         264 LOAD_FAST                2 (result)
+            266 LOAD_METHOD              4 (append)
+            288 LOAD_FAST                7 (new_char)
+            290 PRECALL                  1
+            294 CALL                     1
+            304 POP_TOP
+            306 JUMP_BACKWARD          138 (to 32)
+
+ 31     >>  308 LOAD_FAST                3 (ch)
+            310 LOAD_FAST                1 (sign_mapping)
+            312 CONTAINS_OP              0
+            314 POP_JUMP_FORWARD_IF_FALSE    28 (to 372)
+
+ 33         316 LOAD_FAST                2 (result)
+            318 LOAD_METHOD              4 (append)
+            340 LOAD_FAST                1 (sign_mapping)
+            342 LOAD_FAST                3 (ch)
+            344 BINARY_SUBSCR
+            354 PRECALL                  1
+            358 CALL                     1
+            368 POP_TOP
+            370 JUMP_BACKWARD          170 (to 32)
+
+ 36     >>  372 LOAD_FAST                2 (result)
+            374 LOAD_METHOD              4 (append)
+            396 LOAD_FAST                3 (ch)
+            398 PRECALL                  1
+            402 CALL                     1
+            412 POP_TOP
+            414 JUMP_BACKWARD          192 (to 32)
+
+ 37     >>  416 LOAD_CONST              14 ('')
+            418 LOAD_METHOD              5 (join)
+            440 LOAD_FAST                2 (result)
+            442 PRECALL                  1
+            446 CALL                     1
+            456 RETURN_VALUE

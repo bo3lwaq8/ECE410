@@ -1,0 +1,115 @@
+=== disassembly of logistic_growth ===
+  8           0 RESUME                   0
+
+ 10           2 LOAD_FAST                2 (r)
+              4 LOAD_FAST                1 (y)
+              6 BINARY_OP                5 (*)
+             10 LOAD_CONST               1 (1)
+             12 LOAD_FAST                1 (y)
+             14 LOAD_FAST                3 (K)
+             16 BINARY_OP               11 (/)
+             20 BINARY_OP               10 (-)
+             24 BINARY_OP                5 (*)
+             28 RETURN_VALUE
+
+
+=== disassembly of solve_logistic ===
+ 12           0 RESUME                   0
+
+ 14           2 LOAD_CONST               1 (0.5)
+              4 STORE_FAST               0 (r)
+
+ 15           6 LOAD_CONST               2 (100)
+              8 STORE_FAST               1 (K)
+
+ 16          10 LOAD_CONST               3 (10)
+             12 BUILD_LIST               1
+             14 STORE_FAST               2 (y0)
+
+ 17          16 LOAD_CONST               4 ((0, 20))
+             18 STORE_FAST               3 (t_span)
+
+ 20          20 LOAD_GLOBAL              1 (NULL + solve_ivp)
+             32 LOAD_GLOBAL              2 (logistic_growth)
+             44 LOAD_FAST                3 (t_span)
+             46 LOAD_FAST                2 (y0)
+             48 LOAD_FAST                0 (r)
+             50 LOAD_FAST                1 (K)
+             52 BUILD_TUPLE              2
+             54 LOAD_CONST               5 (True)
+             56 KW_NAMES                 6
+             58 PRECALL                  5
+             62 CALL                     5
+             72 STORE_FAST               4 (sol)
+
+ 23          74 LOAD_GLOBAL              5 (NULL + np)
+             86 LOAD_ATTR                3 (linspace)
+             96 LOAD_FAST                3 (t_span)
+             98 LOAD_CONST               7 (0)
+            100 BINARY_SUBSCR
+            110 LOAD_FAST                3 (t_span)
+            112 LOAD_CONST               8 (1)
+            114 BINARY_SUBSCR
+            124 LOAD_CONST               9 (200)
+            126 PRECALL                  3
+            130 CALL                     3
+            140 STORE_FAST               5 (t)
+
+ 24         142 LOAD_FAST                4 (sol)
+            144 LOAD_METHOD              4 (sol)
+            166 LOAD_FAST                5 (t)
+            168 PRECALL                  1
+            172 CALL                     1
+            182 LOAD_CONST               7 (0)
+            184 BINARY_SUBSCR
+            194 STORE_FAST               6 (y)
+
+ 27         196 LOAD_GLOBAL             11 (NULL + plt)
+            208 LOAD_ATTR                6 (plot)
+            218 LOAD_FAST                5 (t)
+            220 LOAD_FAST                6 (y)
+            222 LOAD_CONST              10 ('Population')
+            224 KW_NAMES                11
+            226 PRECALL                  3
+            230 CALL                     3
+            240 POP_TOP
+
+ 28         242 LOAD_GLOBAL             11 (NULL + plt)
+            254 LOAD_ATTR                7 (xlabel)
+            264 LOAD_CONST              12 ('Time')
+            266 PRECALL                  1
+            270 CALL                     1
+            280 POP_TOP
+
+ 29         282 LOAD_GLOBAL             11 (NULL + plt)
+            294 LOAD_ATTR                8 (ylabel)
+            304 LOAD_CONST              10 ('Population')
+            306 PRECALL                  1
+            310 CALL                     1
+            320 POP_TOP
+
+ 30         322 LOAD_GLOBAL             11 (NULL + plt)
+            334 LOAD_ATTR                9 (title)
+            344 LOAD_CONST              13 ('Logistic Growth Model')
+            346 PRECALL                  1
+            350 CALL                     1
+            360 POP_TOP
+
+ 31         362 LOAD_GLOBAL             11 (NULL + plt)
+            374 LOAD_ATTR               10 (legend)
+            384 PRECALL                  0
+            388 CALL                     0
+            398 POP_TOP
+
+ 32         400 LOAD_GLOBAL             11 (NULL + plt)
+            412 LOAD_ATTR               11 (show)
+            422 PRECALL                  0
+            426 CALL                     0
+            436 POP_TOP
+
+ 34         438 LOAD_GLOBAL              2 (logistic_growth)
+            450 LOAD_GLOBAL             24 (solve_logistic)
+            462 BUILD_TUPLE              2
+            464 RETURN_VALUE
+
+
