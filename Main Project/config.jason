@@ -1,0 +1,11 @@
+{
+    "DESIGN_NAME": "conv5x5_wrapper",
+    "VERILOG_FILES": [
+        "conv5x5_core.sv",
+        "conv5x5_wrapper.sv"
+    ],
+    "TOP_MODULE": "conv5x5_wrapper",
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "PDK": "sky130A"
+}
