@@ -1,0 +1,221 @@
+=== disassembly of calculate_distance_matrix ===
+  7           0 RESUME                   0
+
+  9           2 LOAD_GLOBAL              1 (NULL + len)
+             14 LOAD_FAST                0 (cities)
+             16 PRECALL                  1
+             20 CALL                     1
+             30 STORE_FAST               1 (n)
+
+ 10          32 LOAD_GLOBAL              3 (NULL + np)
+             44 LOAD_ATTR                2 (zeros)
+             54 LOAD_FAST                1 (n)
+             56 LOAD_FAST                1 (n)
+             58 BUILD_TUPLE              2
+             60 PRECALL                  1
+             64 CALL                     1
+             74 STORE_FAST               2 (D)
+
+ 11          76 LOAD_GLOBAL              7 (NULL + range)
+             88 LOAD_FAST                1 (n)
+             90 PRECALL                  1
+             94 CALL                     1
+            104 GET_ITER
+        >>  106 FOR_ITER               107 (to 322)
+            108 STORE_FAST               3 (i)
+
+ 12         110 LOAD_GLOBAL              7 (NULL + range)
+            122 LOAD_FAST                1 (n)
+            124 PRECALL                  1
+            128 CALL                     1
+            138 GET_ITER
+        >>  140 FOR_ITER                89 (to 320)
+            142 STORE_FAST               4 (j)
+
+ 13         144 LOAD_GLOBAL              2 (np)
+            156 LOAD_ATTR                4 (linalg)
+            166 LOAD_METHOD              5 (norm)
+            188 LOAD_GLOBAL              3 (NULL + np)
+            200 LOAD_ATTR                6 (array)
+            210 LOAD_FAST                0 (cities)
+            212 LOAD_FAST                3 (i)
+            214 BINARY_SUBSCR
+            224 PRECALL                  1
+            228 CALL                     1
+            238 LOAD_GLOBAL              3 (NULL + np)
+            250 LOAD_ATTR                6 (array)
+            260 LOAD_FAST                0 (cities)
+            262 LOAD_FAST                4 (j)
+            264 BINARY_SUBSCR
+            274 PRECALL                  1
+            278 CALL                     1
+            288 BINARY_OP               10 (-)
+            292 PRECALL                  1
+            296 CALL                     1
+            306 LOAD_FAST                2 (D)
+            308 LOAD_FAST                3 (i)
+            310 LOAD_FAST                4 (j)
+            312 BUILD_TUPLE              2
+            314 STORE_SUBSCR
+            318 JUMP_BACKWARD           90 (to 140)
+
+ 12     >>  320 JUMP_BACKWARD          108 (to 106)
+
+ 14     >>  322 LOAD_FAST                2 (D)
+            324 RETURN_VALUE
+
+
+=== disassembly of nearest_neighbor_tsp ===
+              0 MAKE_CELL                0 (D)
+              2 MAKE_CELL                5 (last)
+              4 MAKE_CELL                6 (visited)
+
+ 16           6 RESUME                   0
+
+ 21           8 LOAD_GLOBAL              1 (NULL + len)
+             20 LOAD_DEREF               0 (D)
+             22 PRECALL                  1
+             26 CALL                     1
+             36 STORE_FAST               1 (n)
+
+ 22          38 LOAD_CONST               1 (False)
+             40 BUILD_LIST               1
+             42 LOAD_FAST                1 (n)
+             44 BINARY_OP                5 (*)
+             48 STORE_DEREF              6 (visited)
+
+ 23          50 LOAD_CONST               2 (0)
+             52 BUILD_LIST               1
+             54 STORE_FAST               2 (route)
+
+ 24          56 LOAD_CONST               3 (True)
+             58 LOAD_DEREF               6 (visited)
+             60 LOAD_CONST               2 (0)
+             62 STORE_SUBSCR
+
+ 26          66 LOAD_GLOBAL              3 (NULL + range)
+             78 LOAD_CONST               4 (1)
+             80 LOAD_FAST                1 (n)
+             82 PRECALL                  2
+             86 CALL                     2
+             96 GET_ITER
+        >>   98 FOR_ITER                83 (to 266)
+            100 STORE_FAST               3 (_)
+
+ 27         102 LOAD_FAST                2 (route)
+            104 LOAD_CONST               5 (-1)
+            106 BINARY_SUBSCR
+            116 STORE_DEREF              5 (last)
+
+ 28         118 LOAD_GLOBAL              5 (NULL + np)
+            130 LOAD_ATTR                3 (argmin)
+            140 LOAD_CLOSURE             0 (D)
+            142 LOAD_CLOSURE             5 (last)
+            144 LOAD_CLOSURE             6 (visited)
+            146 BUILD_TUPLE              3
+            148 LOAD_CONST               6 (<code object <listcomp> at 0x1027d5680, file "/Users/hussainsoc/Desktop/ECE410/TSP.py", line 28>)
+            150 MAKE_FUNCTION            8 (closure)
+            152 LOAD_GLOBAL              3 (NULL + range)
+            164 LOAD_FAST                1 (n)
+            166 PRECALL                  1
+            170 CALL                     1
+            180 GET_ITER
+            182 PRECALL                  0
+            186 CALL                     0
+            196 PRECALL                  1
+            200 CALL                     1
+            210 STORE_FAST               4 (next_city)
+
+ 29         212 LOAD_FAST                2 (route)
+            214 LOAD_METHOD              4 (append)
+            236 LOAD_FAST                4 (next_city)
+            238 PRECALL                  1
+            242 CALL                     1
+            252 POP_TOP
+
+ 30         254 LOAD_CONST               3 (True)
+            256 LOAD_DEREF               6 (visited)
+            258 LOAD_FAST                4 (next_city)
+            260 STORE_SUBSCR
+            264 JUMP_BACKWARD           84 (to 98)
+
+ 32     >>  266 LOAD_FAST                2 (route)
+            268 RETURN_VALUE
+
+Disassembly of <code object <listcomp> at 0x1027d5680, file "/Users/hussainsoc/Desktop/ECE410/TSP.py", line 28>:
+              0 COPY_FREE_VARS           3
+
+ 28           2 RESUME                   0
+              4 BUILD_LIST               0
+              6 LOAD_FAST                0 (.0)
+        >>    8 FOR_ITER                36 (to 82)
+             10 STORE_FAST               1 (j)
+             12 LOAD_DEREF               4 (visited)
+             14 LOAD_FAST                1 (j)
+             16 BINARY_SUBSCR
+             26 POP_JUMP_FORWARD_IF_TRUE    14 (to 56)
+             28 LOAD_DEREF               2 (D)
+             30 LOAD_DEREF               3 (last)
+             32 BINARY_SUBSCR
+             42 LOAD_FAST                1 (j)
+             44 BINARY_SUBSCR
+             54 JUMP_FORWARD            11 (to 78)
+        >>   56 LOAD_GLOBAL              0 (np)
+             68 LOAD_ATTR                1 (inf)
+        >>   78 LIST_APPEND              2
+             80 JUMP_BACKWARD           37 (to 8)
+        >>   82 RETURN_VALUE
+
+
+=== disassembly of total_distance ===
+ 34           0 RESUME                   0
+
+ 36           2 LOAD_CONST               1 (0)
+              4 STORE_FAST               2 (distance)
+
+ 37           6 LOAD_GLOBAL              1 (NULL + range)
+             18 LOAD_GLOBAL              3 (NULL + len)
+             30 LOAD_FAST                0 (route)
+             32 PRECALL                  1
+             36 CALL                     1
+             46 LOAD_CONST               2 (1)
+             48 BINARY_OP               10 (-)
+             52 PRECALL                  1
+             56 CALL                     1
+             66 GET_ITER
+        >>   68 FOR_ITER                30 (to 130)
+             70 STORE_FAST               3 (i)
+
+ 38          72 LOAD_FAST                2 (distance)
+             74 LOAD_FAST                1 (D)
+             76 LOAD_FAST                0 (route)
+             78 LOAD_FAST                3 (i)
+             80 BINARY_SUBSCR
+             90 LOAD_FAST                0 (route)
+             92 LOAD_FAST                3 (i)
+             94 LOAD_CONST               2 (1)
+             96 BINARY_OP                0 (+)
+            100 BINARY_SUBSCR
+            110 BUILD_TUPLE              2
+            112 BINARY_SUBSCR
+            122 BINARY_OP               13 (+=)
+            126 STORE_FAST               2 (distance)
+            128 JUMP_BACKWARD           31 (to 68)
+
+ 39     >>  130 LOAD_FAST                2 (distance)
+            132 LOAD_FAST                1 (D)
+            134 LOAD_FAST                0 (route)
+            136 LOAD_CONST               3 (-1)
+            138 BINARY_SUBSCR
+            148 LOAD_FAST                0 (route)
+            150 LOAD_CONST               1 (0)
+            152 BINARY_SUBSCR
+            162 BUILD_TUPLE              2
+            164 BINARY_SUBSCR
+            174 BINARY_OP               13 (+=)
+            178 STORE_FAST               2 (distance)
+
+ 40         180 LOAD_FAST                2 (distance)
+            182 RETURN_VALUE
+
+

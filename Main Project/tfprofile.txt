@@ -1,0 +1,58 @@
+         39909 function calls (38707 primitive calls) in 0.349 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1279 to 50 due to restriction <50>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.004    0.004    0.184    0.184 traceback_utils.py:59(error_handler)
+        1    0.000    0.000    0.180    0.180 training.py:2376(predict)
+  339/244    0.001    0.000    0.172    0.001 {built-in method builtins.next}
+        1    0.000    0.000    0.166    0.166 image.py:155(__next__)
+        1    0.000    0.000    0.166    0.166 image.py:158(next)
+        1    0.008    0.008    0.166    0.166 image.py:355(_get_batches_of_transformed_samples)
+       32    0.002    0.000    0.137    0.004 image_utils.py:364(load_img)
+        1    0.000    0.000    0.120    0.120 data_adapter.py:1636(get_data_handler)
+        1    0.000    0.000    0.120    0.120 data_adapter.py:1225(__init__)
+        1    0.000    0.000    0.118    0.118 data_adapter.py:240(__init__)
+       32    0.001    0.000    0.098    0.003 Image.py:863(convert)
+       32    0.005    0.000    0.090    0.003 ImageFile.py:155(load)
+        3    0.000    0.000    0.085    0.028 structured_function.py:77(__init__)
+        3    0.000    0.000    0.082    0.027 polymorphic_function.py:1187(get_concrete_function)
+        3    0.000    0.000    0.082    0.027 polymorphic_function.py:1148(_get_concrete_function_garbage_collected)
+        7    0.001    0.000    0.079    0.011 tracing_compiler.py:324(_maybe_define_function)
+        3    0.000    0.000    0.078    0.026 polymorphic_function.py:659(_initialize)
+        6    0.000    0.000    0.078    0.013 tracing_compiler.py:165(_maybe_define_concrete_function)
+        3    0.000    0.000    0.075    0.025 tracing_compiler.py:173(_get_concrete_function_internal_garbage_collected)
+      300    0.072    0.000    0.072    0.000 {method 'decode' of 'ImagingDecoder' objects}
+        3    0.000    0.000    0.063    0.021 tracing_compiler.py:280(_create_concrete_function)
+    39/21    0.000    0.000    0.063    0.003 traceback_utils.py:138(error_handler)
+        2    0.000    0.000    0.057    0.029 dataset_ops.py:2121(map)
+        2    0.000    0.000    0.057    0.029 map_op.py:27(_map_v2)
+        3    0.000    0.000    0.055    0.018 func_graph.py:920(func_graph_from_py_func)
+       25    0.042    0.002    0.042    0.002 {built-in method tensorflow.python._pywrap_tfe.TFE_Py_FastPathExecute}
+        1    0.000    0.000    0.042    0.042 dataset_ops.py:2286(flat_map)
+        1    0.000    0.000    0.042    0.042 flat_map_op.py:22(_flat_map)
+        1    0.000    0.000    0.042    0.042 flat_map_op.py:30(__init__)
+        1    0.000    0.000    0.036    0.036 map_op.py:97(__init__)
+    17/13    0.000    0.000    0.033    0.003 dispatch.py:1162(op_dispatch_handler)
+        3    0.000    0.000    0.031    0.010 polymorphic_function.py:578(wrapped_fn)
+        3    0.000    0.000    0.031    0.010 structured_function.py:237(wrapped_fn)
+        3    0.000    0.000    0.030    0.010 structured_function.py:162(wrapper_helper)
+        2    0.000    0.000    0.028    0.014 data_adapter.py:1328(enumerate_epochs)
+        1    0.000    0.000    0.027    0.027 polymorphic_function.py:797(__call__)
+        1    0.000    0.000    0.027    0.027 polymorphic_function.py:844(_call)
+        1    0.000    0.000    0.027    0.027 tracing_compiler.py:143(__call__)
+       56    0.000    0.000    0.027    0.000 {built-in method builtins.iter}
+        1    0.000    0.000    0.027    0.027 dataset_ops.py:493(__iter__)
+        1    0.000    0.000    0.027    0.027 iterator_ops.py:672(__init__)
+        1    0.000    0.000    0.027    0.027 iterator_ops.py:714(_create_iterator)
+        3    0.000    0.000    0.027    0.009 api.py:682(wrapper)
+        3    0.000    0.000    0.027    0.009 api.py:295(converted_call)
+        1    0.000    0.000    0.026    0.026 gen_dataset_ops.py:3432(make_iterator)
+        1    0.000    0.000    0.026    0.026 monomorphic_function.py:1274(_call_flat)
+        1    0.000    0.000    0.026    0.026 atomic_function.py:163(__call__)
+        1    0.000    0.000    0.026    0.026 context.py:1447(call_function)
+        1    0.000    0.000    0.026    0.026 execute.py:28(quick_execute)
+        1    0.026    0.026    0.026    0.026 {built-in method tensorflow.python._pywrap_tfe.TFE_Py_Execute}
+
+

@@ -1,0 +1,54 @@
+## 7️⃣ Parallelism Insights
+
+Based on the AST dependency analysis, identify which parts of each workload can run concurrently:
+
+- **Cryptography Algorithm (`cryptography.py`):**  
+  - **Data‑parallel**: Character shifts are independent (no shared state), ideal for SIMD or vectorized execution.  
+  - **Loop structure**: Single loop over input characters; each iteration only reads one character and writes one output.
+
+- **Differential Equation Solver (`differential_equation.py`):**  
+  - **Library‑offloaded**: The heavy numerical integration is done inside SciPy’s compiled C code—parallelism here depends on underlying BLAS/ODE solver threading.  
+  - **Post‐processing**: Evaluating the dense output at many time points (`sol.sol(t)`) can be data‑parallel.
+
+- **TSP Nearest‑Neighbor (`TSP.py`):**  
+  - **Distance matrix build**: Nested loops computing `D[i,j]` are independent—amenable to parallel for‑loops or GPU kernels.  
+  - **Route construction**: Sequential greedy choice, not parallel, but the inner distance‐lookup for each candidate can be vectorized.
+
+### Potential Architectures
+
+- **Crypto ASIC**: Array of small ALUs performing shift/multiply/mod operations in lock‑step.  
+- **ODE Accelerator**: Host CPU orchestration + multi‐threaded BLAS/ODE kernel co‐processor.  
+- **TSP Co‐processor**: Parallel distance‐compute units feeding a single sequential decision engine.
+
+---
+
+## 8️⃣ Findings & Next Steps
+
+### Key Learnings
+
+- **Bytecode Patterns**  
+  - Pure‑Python loops generate many `BINARY_OP` and `FOR_ITER` instructions.  
+  - Library calls (`solve_ivp`, `np.linalg.norm`) show up as `LOAD_GLOBAL`/`CALL_FUNCTION`, with minimal Python‑level arithmetic.
+
+- **Profiling Hotspots**  
+  - Crypto routine is CPU‑bound in pure Python.  
+  - DE solver spends almost all time inside compiled SciPy code.  
+  - TSP spends significant time in nested loops and array indexing.
+
+- **Parallelism Potential**  
+  - High for data‑parallel tasks (cipher, distance matrix).  
+  - Medium for library offloads (ODE solve).  
+  - Low for inherently sequential heuristics (route building).
+
+### Next Steps
+
+1. **Implement Additional Workloads**: Quicksort, matrix multiplication, or a small CNN.  
+2. **Compare with JIT/VM**: Analyze PyPy or Numba‑compiled versions.  
+3. **Prototype Architectures**: Simulate domain‑specific accelerators for each opcode mix using a simple interpreter.  
+4. **Document Insights**: Produce charts of opcode distributions and profiling flamegraphs for your final report.  
+
+
+
+
+
+
