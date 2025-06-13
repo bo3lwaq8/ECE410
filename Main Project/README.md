@@ -8,6 +8,10 @@ The project began with a software-first approach, profiling a TensorFlow/Keras-b
 
 The journey involved overcoming significant challenges, including Icarus Verilog compatibility issues, FPGA I/O limitations, and debugging complex FSM and clock-domain crossing logic. The final hardware, synthesized for a Xilinx Artix-7 FPGA, achieved a maximum frequency of **~101.51 MHz**. The hardware core demonstrated a **31.1x speedup** for the accelerated layer compared to a pure Python/NumPy implementation. This document details the entire workflow, from analysis and design to the final benchmarks and the valuable debugging experiences along the way.
 
+## Development Note
+
+The HDL code (SystemVerilog), Python testbenches (`cocotb`), and documentation in this project were developed with the significant assistance of a Large Language Model (LLM). This approach, encouraged by the course materials for rapid prototyping and "vibe coding," was instrumental in generating initial code structures, debugging complex issues, and refining the design through multiple iterations.
+
 ---
 
 ## Table of Contents
@@ -149,4 +153,3 @@ This project involved a significant debugging effort, which was a valuable learn
 -   **Advanced Interface:** The simple SPI interface could be replaced with a higher-throughput interface like AXI4-Stream for integration into more complex SoC designs.
 -   **ASIC Flow Completion:** Revisit the OpenLane 2 flow to synthesize the final design down to a GDSII layout to complete the ASIC-level success criterion.
 -   **Full System Benchmarking:** Measure the performance of the accelerator when integrated with the full software application to evaluate the overall application speedup, considering data transfer overheads (Amdahl's Law).
-
