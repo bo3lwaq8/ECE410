@@ -39,7 +39,6 @@ This project analyzes the performance of a simple vector addition algorithm on a
 
 ## Analysis of Results
 
-![Performance Chart](performance_chart.png)
 
 The performance chart reveals several key insights into GPU computing:
 
