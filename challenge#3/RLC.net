@@ -1,0 +1,8 @@
+* C:\Users\alaso\OneDrive\Desktop\classification-challenge\classification-challenge\Main project\challenge#3\RLC.asc
+R1 N002 N001 5
+L1 N002 N003 1m
+C1 0 N003 1µ
+V1 N001 0 PULSE(0 5 0 1n 1n 5m 10m)
+.tran 5m
+.backanno
+.end
